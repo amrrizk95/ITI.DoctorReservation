@@ -29,6 +29,7 @@ namespace ITI.DoctorReservation.Controllers
 
         public IActionResult GetById(int id)
         {
+            // fixing this bug 
             var doctor = _doctorService.GetDoctorById(id);
             if (doctor == null)
             {
