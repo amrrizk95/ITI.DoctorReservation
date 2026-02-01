@@ -27,10 +27,10 @@ namespace ITI.DoctorReservation.Controllers
         }
         [HttpGet("{id}")]
 
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             // fixing this bug 
-            var doctor = _doctorService.GetDoctorById(id);
+            var doctor = await _doctorService.GetDoctorById(id);
             if (doctor == null)
             {
                 return NotFound();
@@ -50,10 +50,10 @@ namespace ITI.DoctorReservation.Controllers
 
 
         [HttpPut]
-        public IActionResult Update( [FromBody] UpdateDoctorDto doctorDto)
+        public async Task<IActionResult> Update( [FromBody] UpdateDoctorDto doctorDto)
         {
     
-            var existingDoctor = _doctorService.Update(doctorDto);
+            var existingDoctor = await _doctorService.Update(doctorDto);
             return Ok(existingDoctor);
         }
     }
