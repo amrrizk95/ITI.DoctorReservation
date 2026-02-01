@@ -11,6 +11,7 @@ namespace ITI.DoctorReservation.Modles
 
         }
         public DbSet<Doctor> Doctors { get; set; } 
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

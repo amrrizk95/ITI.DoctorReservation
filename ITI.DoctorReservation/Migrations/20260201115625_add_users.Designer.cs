@@ -3,6 +3,7 @@ using ITI.DoctorReservation.Modles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ITI.DoctorReservation.Migrations
 {
     [DbContext(typeof(DoctorsDbContext))]
-    partial class DoctorsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260201115625_add_users")]
+    partial class add_users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
