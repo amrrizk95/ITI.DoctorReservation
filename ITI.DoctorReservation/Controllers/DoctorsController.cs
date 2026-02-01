@@ -4,6 +4,7 @@ using ITI.DoctorReservation.Repositories.Interfaces;
 using ITI.DoctorReservation.RequestModels;
 using ITI.DoctorReservation.Services;
 using ITI.DoctorReservation.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace ITI.DoctorReservation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
@@ -20,6 +22,7 @@ namespace ITI.DoctorReservation.Controllers
             _doctorService = doctorService;
         }
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             var doctors = await _doctorService.GetAllDoctors();
@@ -40,6 +43,7 @@ namespace ITI.DoctorReservation.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles ="User,Admin")]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto doctorDto)
         {
           
